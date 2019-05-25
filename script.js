@@ -1,4 +1,5 @@
 var mathExpression=[];
+var answer;
 
 function generateNumberPadandOperatorPad(){
     var board = document.getElementById('pad');
@@ -24,7 +25,7 @@ function generateNumberPadandOperatorPad(){
     
     num.appendChild(numberPad)
     
-    var operators = ['+','-', '='];
+    var operators = ['+','-', '*',  '='];
     var operatorDiv = document.getElementById("operators");
     
     for(var i=0; i<operators.length; i++){
@@ -49,12 +50,12 @@ function generateNumberPadandOperatorPad(){
 var CeButton = document.getElementById('ce');
 var answerH1 = document.getElementById('answer');
 var del = document.getElementById('del');
-var eval = document.getElementById('eval');
+var expessionPreview = document.getElementById('eval');
 
 CeButton.addEventListener('click', () => {
     mathExpression = [];
     answerH1.innerHTML="";
-    eval.innerHTML = "";
+    expessionPreview.innerHTML = "";
 })
 
 del.addEventListener('click', deleteNumber);
@@ -75,7 +76,7 @@ function getNumber(){
 function deleteNumber(){
     var previous = mathExpression.pop();
     answerH1.innerHTML = (answerH1.innerHTML).substring(0, answerH1.innerHTML.length-1);
-    eval.innerHTML = "";
+    expessionPreview.innerHTML = "";
 }
 
 for(var i=0; i<buttons.length; i++){
@@ -88,9 +89,11 @@ function getOperator(){
     if(mathExpression.length >0 && this.innerHTML != '='){
         mathExpression.push(this.innerHTML);
         answerH1.innerHTML = answerH1.innerHTML + this.innerHTML;
-    }else if(this.innerHTML == '='){
-        eval.innerHTML = answerH1.innerHTML + "="
-
+    }else if(this.innerHTML == '=' ){
+        expessionPreview.innerHTML = answerH1.innerHTML + "="
+        var string = answerH1.innerHTML;
+        answer = eval(string);
+        answerH1.innerHTML = answer;
         //TODO 
         // Simplify Expression
     }

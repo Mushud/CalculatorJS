@@ -41,14 +41,12 @@
     flex-direction: row;
 }
 
-#numberPad{
-   
-}
+
 
 #clear button{
     padding: 15px;
     margin: 3px;
-    background-color: #44444449;
+    background-color: #41333349;
     border-style: none;
 }
 
