@@ -53,6 +53,10 @@
     border-style: none;
 }
 
+#clear button:hover{
+    background-color: #be121249
+}
+
 #numberPad #numBtn{
     padding: 20px;
     margin: 3px;
@@ -60,11 +64,19 @@
     border-style: none;
 }
 
+#numberPad #numBtn:hover{
+    background-color: #0f5e9249;
+}
+
 #number #extraBtn{
     padding: 20px;
     margin: 3px;
     background-color: #44444449;
     border-style: none;
+}
+
+#number #extraBtn:hover{
+    background-color: #bbb81449;
 }
 
 #operators{
@@ -76,6 +88,10 @@
     padding: 20px;
     margin: 3px;
     background-color: #44444449;
-    border-style: none;
-   
+    border-style: none; 
 }
+
+#operators button:hover{
+    background-color: #0cda3f49
+}
+
