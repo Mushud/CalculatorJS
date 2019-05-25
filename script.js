@@ -23,7 +23,20 @@ function generateNumberPadandOperatorPad(){
         
     } 
     
-    num.appendChild(numberPad)
+    num.appendChild(numberPad);
+
+    var extrakeys = ['%', '0', '/'];
+    var extraDiv = document.createElement('div');
+    extraDiv.setAttribute('id', 'extraBtns')
+    for(var i=0; i<extrakeys.length; i++){
+        var extraBtn = document.createElement('button');
+        extraBtn.setAttribute('id', 'extraBtn');
+        var btnLabels = document.createTextNode(extrakeys[i]);
+        extraBtn.appendChild(btnLabels);
+        extraDiv.appendChild(extraBtn);
+    }
+
+    num.appendChild(extraDiv);
     
     var operators = ['+','-', '*',  '='];
     var operatorDiv = document.getElementById("operators");
@@ -102,4 +115,17 @@ function getOperator(){
 
 for(var i =0; i<operators.length; i++){
     operators[i].onclick = getOperator;
+}
+
+var extras = $('#extraBtns').getElementsByTagName('button');
+
+for(var i=0; i<extras.length; i++){
+    extras[i].onclick = getExtraBtns;
+}
+
+function getExtraBtns(){
+    if(mathExpression.length>0){
+        mathExpression.push(this.innerHTML);
+        answerH1.innerHTML = answerH1.innerHTML + this.innerHTML;
+    }
 }
